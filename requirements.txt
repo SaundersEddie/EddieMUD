@@ -1,2 +1,4 @@
 telnetlib3
-mysql-connector-python
+json5
+duckdb
+fsspec  # for duckdb json support
