@@ -1,0 +1,9 @@
+pytest 
+pytest-asyncio
+pytest-mock
+telnetlib3
+python-dotenv
+pylint
+json5
+duckdb
+fsspec  # json support for duckdb

@@ -1,3 +1,3 @@
 venv/
-src/python/EddieMUD/__pycache__/
+__pycache__/
 .env
