@@ -1,4 +1,0 @@
-{
-	"name": "magic missile",
-	"prep_steps": ["hold_pebble", "pebble_disappears"]
-}
