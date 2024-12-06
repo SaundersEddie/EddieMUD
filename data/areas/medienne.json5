@@ -1,0 +1,53 @@
+{
+    id: 2,
+    name: "The City of Medienne",
+    rooms: [
+        {id: 1, name: "Fountain Square",
+         doors: {
+           n: {to: 2},
+           e: {to: 4},
+           w: {to: 6},
+           s: {to: 3},
+         }},
+        {id: 2, name: "The Library",
+         doors: {
+           s: {to: 1},
+           d: {to: 9},
+         }},
+        {id: 3, name: "The Temple",
+         doors: {
+           n: {to: 1},
+           u: {to: 8},
+         }},
+        {id: 4, name: "The East Gate",
+         doors: {
+           w: {to: 1},
+           e: {to: 5, flags: {closed: true}},
+         }},
+        {id: 5, name: "Outside the East Gate",
+         doors: {
+           w: {to: 4, flags: {closed: true}},
+         }},
+        {id: 6, name: "The West Gate",
+         doors: {
+           e: {to: 1},
+           w: {to: 7, flags: {closed: true}},
+         }},
+        {id: 7, name: "Outside the West Gate",
+         doors: {
+           e: {to: 6, flags: {closed: true}},
+         }},
+        {id: 8, name: "Bell Tower",
+         flags: {
+           safe: true,
+         },
+         doors: {
+           d: {to: 3},
+         }},
+        {id: 9, name: "Archive Room",
+         doors: {
+           u: {to: 2},
+         }},
+    ],
+}
+

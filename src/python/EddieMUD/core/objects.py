@@ -1,13 +1,19 @@
 
+class World:
+    def __init__(self, **flags):
+        self.areas = []
+        self.flags = {}
+        self.flags.update(flags)
+
 class Area:
-    def __init__(self, world, name, description, **flags):
+    def __init__(self, world, id, name, description=None, **flags):
         self.world = world
         self.world.areas.append(self)
+        self.id = id
         self.name = name
         self.description = description
         self.flags = {"open":True}
-        for k,v in flags.items():
-            self.flags[k] = v
+        self.flags.update(flags)
         self.rooms = []
 
 class Door:
@@ -18,8 +24,7 @@ class Door:
         self.flags = {"closed":False, "closable":False, "openable":False}
         self.room_start = room_start
         self.room_end = room_end
-        for k,v in flags.items():
-            self.flags[k] = v
+        self.flags.update(flags)
         # self.closed = closed
         # self.closable = closable
         # self.openable = openable
@@ -27,9 +32,10 @@ class Door:
         return self.flags["closed"]
 
 class Room:
-    def __init__(self, area, name, description=None, **flags):
+    def __init__(self, area, id, name, description=None, **flags):
         self.area = area
         self.area.rooms.append(self)
+        self.id = id
         self.name = name
         self.description = description
         self.flags = {}
@@ -43,30 +49,33 @@ class Room:
         self.resets = []
 
 class MobDefinition:
-    def __init__(self, name):
+    def __init__(self, id, name):
+        self.id = id
         self.name = name
         self.flags = {}
 
 class Mob:
-    def __init__(self, definition, name=None, **flags):
+    def __init__(self, room, definition, name=None, **flags):
         self.definition = definition
-        self.name = name
+        self.room = room
+        room.mobs.append(self)
+        self.name = name if name else definition.name
         self.flags = dict(definition.flags)
-        for k,v in flags.items():
-            self.flags[k] = v
+        self.flags.update(flags)
 
 class ObjDefinition:
-    def __init__(self, name):
+    def __init__(self, id, name):
+        self.id = id
         self.name = name
+        print(self.name)
         self.flags = {}
 
 class Obj:
     def __init__(self, definition, name=None, **flags):
         self.definition = definition
-        self.name = name
+        self.name = name if name else definition.name
         self.flags = dict(definition.flags)
-        for k,v in flags.items():
-            self.flags[k] = v
+        self.flags.update(flags)
 
 class Player:
     def __init__(self, client, room, name, description, definition, inventory, equipment, stats, **flags):
