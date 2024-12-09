@@ -1,0 +1,15 @@
+on:
+  push:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
+    - name: install test requirements
+      run: pip install -r test-requirements.txt
+    - name: pylint (errors only)
+      run: pylint -E src/python/EddieMUD
+    - name: pytest
+      run: PYTHONPATH=src/python pytest -s src/test

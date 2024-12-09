@@ -12,13 +12,13 @@ python -m venv venv
 pip install -r requirements.txt
 
 For local testing:
-pip install -r requirementsTest.txt
+pip install -r test-requirements.txt
 ```
 
 Run:
 
 ```
-PYTHONPATH=./src/python python -m EddieMUD.main
+PYTHONPATH=./src/python python -m EddieMUD.core.main
 ```
 
 Testing:
